@@ -5,8 +5,8 @@
 	<persistence-unit name="PU_Project_Ecommerce_JSF_EJB_JPA"
 		transaction-type="JTA">
 
-		<!-- Spécifier le fournisseur de l'implémentation de JPA -->
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<!-- Gestion de la dataSource qui sera configurée sur wildfly -->
+		<jta-data-source>java:/DataSourceEcom</jta-data-source>
 
 		<!-- Déclaration des entités managées -->
 		<class>fr.adaming.model.Adresse</class>
@@ -16,16 +16,10 @@
 		<class>fr.adaming.model.Gestionnaire</class>
 		<class>fr.adaming.model.Produit</class>
 
-		<!-- Spécifier les infos de la connexion -->
-		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbjspservlet" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="root" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 
-			<!-- Spécifier la stratégie pour la création des tables -->
-			<property name="javax.persistence.schema-generation.database.action"
-				value="create-or-extend-tables" />
+		<!-- Spécifier la stratégie pour la création des tables -->
+		<properties>
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
 		</properties>
 	</persistence-unit>
 </persistence>
